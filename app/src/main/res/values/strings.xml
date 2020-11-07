@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DU_AN_1</string>
+    <string name="first_slide_title">WELCOME TO THE KING OF THE FOOD</string>
+    <string name="second_slide_title">CƠM GÀ</string>
+    <string name="third_slide_title">HUMBERGER</string>
+
+    <string name="first_slide_desc">Nhóm 2</string>
+    <string name="second_slide_desc">Có cơm và gà</string>
+
+    <string name="third_slide_desc">Có bánh mì và nhân</string>
+    <string name="welcom_king_food">WELCOM TO \n KING FOOD</string>
+</resources>
