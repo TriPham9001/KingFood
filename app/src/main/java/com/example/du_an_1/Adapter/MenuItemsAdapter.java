@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.du_an_1.Model.MenuItems;
@@ -21,8 +22,26 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MenuItemsAdapter extends RecyclerView.Adapter<MenuItemsAdapter.RecommendedViewHolder> {
 
+    private Context mContext;
+    private MenuItemsAdapter menuItemsAdapter;
     private List<MenuItems> menuItemsList;
+    private List<String> menuKeys;
     Context context;
+
+    public MenuItemsAdapter() {
+    }
+
+    public void setConfig(RecyclerView recyclerView, Context context, List<MenuItems> menuItemsList, List<String> keys){
+        mContext = context;
+        menuItemsAdapter = new MenuItemsAdapter(menuItemsList, keys);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(menuItemsAdapter);
+    }
+
+    public MenuItemsAdapter(List<MenuItems> menuItemsList, List<String> menuKeys) {
+        this.menuItemsList = menuItemsList;
+        this.menuKeys = menuKeys;
+    }
 
     public MenuItemsAdapter(List<MenuItems> menuItemsList, Context context) {
         this.menuItemsList = menuItemsList;
@@ -36,8 +55,7 @@ public class MenuItemsAdapter extends RecyclerView.Adapter<MenuItemsAdapter.Reco
         if (menuItems == null){
             return;
         }
-        holder.imgallitems.setImageResource(menuItems.getResourceId());
-        holder.txtallitems.setText(menuItems.getTitle());
+        holder.Bind(menuItemsList.get(position),menuKeys.get(position));
     }
 
     @NonNull
@@ -45,7 +63,6 @@ public class MenuItemsAdapter extends RecyclerView.Adapter<MenuItemsAdapter.Reco
     public MenuItemsAdapter.RecommendedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.allmenu_recycler_items,parent,false);
         return new RecommendedViewHolder(view);
-
     }
 
     @Override
@@ -61,10 +78,16 @@ public class MenuItemsAdapter extends RecyclerView.Adapter<MenuItemsAdapter.Reco
 
         private ImageView imgallitems;
         private TextView txtallitems;
+        private String key;
         public RecommendedViewHolder(@NonNull View itemView) {
             super(itemView);
             imgallitems = itemView.findViewById(R.id.all_menu_image);
             txtallitems = itemView.findViewById(R.id.all_menu_name);
+        }
+        public void Bind(MenuItems menuItems, String key){
+            imgallitems.setBackgroundResource(R.drawable.comga);
+            txtallitems.setText(menuItems.getTitle());
+            this.key = key;
         }
     }
 }

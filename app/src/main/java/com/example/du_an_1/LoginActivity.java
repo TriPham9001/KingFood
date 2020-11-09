@@ -2,40 +2,38 @@ package com.example.du_an_1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
-    String TAG="FIREBASE";
     Button btnLogin,btnRegister;
+    EditText edtUsername,edtPassword;
+    TextInputLayout textInputLayout;
+    String username,password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
+        edtUsername = findViewById(R.id.edtUserName);
+        edtPassword = findViewById(R.id.edtPassword);
+        textInputLayout = findViewById(R.id.txtPassword);
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("username");
-        databaseReference.setValue("Hello Phong");
+        username = edtUsername.getText().toString();
+        password = textInputLayout.getEditText().getText().toString();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(i);
-            }
+                    Intent i2 = new Intent(LoginActivity.this, HomeAdmin.class);
+                    startActivity(i2);
+                }
         });
     }
 }

@@ -80,33 +80,33 @@ public class HomeFragment extends Fragment {
         recyclerRecommended.setLayoutManager(layoutManagerMenuItems);
 
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Food");
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-            if(snapshot.exists()){
-                Iterable<DataSnapshot> snapshots = snapshot.getChildren();
-                Iterator<DataSnapshot> iterator = snapshots.iterator();
-                while (iterator.hasNext()){
-                    DataSnapshot next = (DataSnapshot) iterator.next();
-                    Popular popular = next.getValue(Popular.class);
-                    arrayListNameFood.add(popular);
-                    popularAdapter = new PopularAdapter(arrayListNameFood,getContext());
-                    recyclerPopular.setAdapter(popularAdapter);
-                    recyclerPopular.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    LinearLayoutManager layoutManagerr = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-                    recyclerPopular.setLayoutManager(layoutManagerr);
-                }
-            }
-        }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.w("Firebase","Failed to read value", error.toException());
-            }
-        });
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("Food");
+//
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//            if(snapshot.exists()){
+//                Iterable<DataSnapshot> snapshots = snapshot.getChildren();
+//                Iterator<DataSnapshot> iterator = snapshots.iterator();
+//                while (iterator.hasNext()){
+//                    DataSnapshot next = (DataSnapshot) iterator.next();
+//                    Popular popular = next.getValue(Popular.class);
+//                    arrayListNameFood.add(popular);
+//                    popularAdapter = new PopularAdapter(arrayListNameFood,getContext());
+//                    recyclerPopular.setAdapter(popularAdapter);
+//                    recyclerPopular.setLayoutManager(new LinearLayoutManager(getActivity()));
+//                    LinearLayoutManager layoutManagerr = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+//                    recyclerPopular.setLayoutManager(layoutManagerr);
+//                }
+//            }
+//        }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                Log.w("Firebase","Failed to read value", error.toException());
+//            }
+//        });
         setData();
         return view;
     }
@@ -115,6 +115,7 @@ public class HomeFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_home);
+        setData();
     }
     public void setData(){
         mList = new ArrayList<>();

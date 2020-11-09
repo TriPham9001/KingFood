@@ -59,14 +59,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="24dp"
-            android:text="Popular this Week"
+            android:text="All Food in Restaurant"
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/popular_recycler"
+            android:id="@+id/food_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -82,11 +82,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="24dp"
-            android:text="Recommened for You"
+            android:text="All Drink in Restaurant"
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/popular_recycler" />
+            app:layout_constraintTop_toBottomOf="@+id/food_recycler" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recommended_recycler"
@@ -103,7 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="24dp"
-            android:text="All Menu Items"
+            android:text="All Voucher"
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
