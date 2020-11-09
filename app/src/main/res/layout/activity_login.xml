@@ -25,9 +25,9 @@
             android:textAlignment="center" />
         <ImageView
             android:id="@+id/logoFpoly"
-            android:layout_width="290dp"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:src="@drawable/logo" />
+            android:src="@drawable/background" />
     </LinearLayout>
 
 

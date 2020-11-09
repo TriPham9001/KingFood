@@ -8,6 +8,10 @@ public class Popular {
     public Popular() {
     }
 
+    public Popular(String title) {
+        this.title = title;
+    }
+
     public Popular(int resourceId, String title) {
         this.resourceId = resourceId;
         this.title = title;

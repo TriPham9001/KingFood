@@ -8,6 +8,13 @@ public class Food {
     private String evaluateFood;
     private String describeFood;
 
+    public Food() {
+    }
+
+    public Food(String nameFood) {
+        this.nameFood = nameFood;
+    }
+
     public Food(String idFood, String nameFood, byte[] pictureFood, int priceFood, String evaluateFood, String describeFood) {
         this.idFood = idFood;
         this.nameFood = nameFood;

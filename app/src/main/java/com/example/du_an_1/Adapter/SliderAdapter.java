@@ -49,7 +49,7 @@ public class SliderAdapter extends PagerAdapter {
         switch (position)
         {
             case 0:
-                logo.setImageResource(R.drawable.logo);
+                logo.setImageResource(R.drawable.background);
                 ind1.setImageResource(R.drawable.seleted);
                 ind2.setImageResource(R.drawable.unselected);
                 ind3.setImageResource(R.drawable.unselected);
