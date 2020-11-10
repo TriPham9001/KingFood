@@ -25,9 +25,9 @@
             android:textAlignment="center" />
         <ImageView
             android:id="@+id/logoFpoly"
-            android:layout_width="match_parent"
+            android:layout_width="290dp"
             android:layout_height="250dp"
-            android:src="@drawable/background" />
+            android:src="@drawable/logo" />
     </LinearLayout>
 
 
@@ -48,7 +48,7 @@
         android:textSize="20sp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtPassword"
+        android:id="@+id/pass"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edtUserName"
@@ -57,7 +57,6 @@
         app:passwordToggleEnabled="true">
 
         <EditText
-            android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/line"
@@ -77,7 +76,7 @@
         android:id="@+id/checkbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtPassword"
+        android:layout_below="@+id/pass"
         android:layout_marginBottom="10dp"
         android:buttonTint="#82D7FA"
         android:text="Nhớ mật khẩu"/>
