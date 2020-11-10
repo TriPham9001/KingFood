@@ -9,4 +9,22 @@
 
     <string name="third_slide_desc">Có bánh mì và nhân</string>
     <string name="welcom_king_food">WELCOM TO \n KING FOOD</string>
+
+    <!-- Home-->
+    <string name="id_food">Mã Đồ Ăn</string>
+    <string name="id_drink">Mã Đồ Uống</string>
+    <string name="name_drink">Tên Đồ Uống</string>
+    <string name="price_drink">Giá Tiền</string>
+    <string name="describe_drink">Mô Tả</string>
+    <string name="name_food">Tên Đồ Ăn</string>
+    <string name="price_food">Giá Tiền</string>
+    <string name="describe_food">Mô Tả</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="get_started">Get Started</string>
+    <string name="king_food">KING FOOD</string>
+    <string name="hint_username">Nhập tên tài khoản</string>
+    <string name="chb_remember_password">Nhớ mật khẩu</string>
+    <string name="btn_registration">Đăng ký</string>
+    <string name="btn_login">Đăng nhập</string>
 </resources>

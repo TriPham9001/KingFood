@@ -13,11 +13,9 @@ import com.example.du_an_1.Fragment.FavoriteFragment;
 import com.example.du_an_1.Fragment.HomeFragment;
 import com.example.du_an_1.Fragment.PersonFragment;
 import com.example.du_an_1.Fragment.ShopFragment;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
     BottomNavigationView nav_bottom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState == null){
             loadFragment(new HomeFragment());
         }
-
     }
 
    private BottomNavigationView.OnNavigationItemSelectedListener navListener=
