@@ -96,12 +96,5 @@ public class HomeFragment extends Fragment {
         List.add(new Recommended(R.drawable.comga, "Cơm Gà"));
         List.add(new Recommended(R.drawable.humberger, "Humberger"));
         List.add(new Recommended(R.drawable.comchien, "Cơm chiên "));
-
-        nList = new ArrayList<>();
-        nList.add(new ProductDrink(R.drawable.comga,"Cơm Gà") );
-        nList.add(new ProductDrink(R.drawable.humberger,"Humberger") );
-        nList.add(new ProductDrink(R.drawable.ic_banhxeo,"Bánh Xèo") );
-        nList.add(new ProductDrink(R.drawable.comga,"Cơm Gà") );
-        nList.add(new ProductDrink(R.drawable.comchien, "Cơm chiên "));
     }
 }

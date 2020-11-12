@@ -11,11 +11,13 @@ import com.example.duan1.Fragment.FavoriteFragment;
 import com.example.duan1.Fragment.HomeFragment;
 import com.example.duan1.Fragment.PersonFragment;
 import com.example.duan1.Fragment.ShopFragment;
-
+import com.example.duan1.Model.ProductDrink;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-
+    DatabaseReference mDatabase;
     BottomNavigationView nav_bottom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState == null){
             loadFragment(new HomeFragment());
         }
-
     }
+
    private BottomNavigationView.OnNavigationItemSelectedListener navListener=
            new BottomNavigationView.OnNavigationItemSelectedListener() {
                @Override
@@ -59,11 +61,12 @@ public class MainActivity extends AppCompatActivity {
                            selectedFragment).commit();
                    return true;
                }
-           };
-    private void loadFragment(Fragment fragment){
+   };
+
+   private void loadFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container,fragment);
         transaction.addToBackStack(null);
         transaction.commit();
-    }
+   }
 }

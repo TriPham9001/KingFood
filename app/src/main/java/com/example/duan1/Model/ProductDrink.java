@@ -1,32 +1,19 @@
 package com.example.duan1.Model;
 
-import java.io.Serializable;
+import android.graphics.drawable.Drawable;
 
-public class ProductDrink implements Serializable {
+public class ProductDrink {
+
     private String nameDrink;
     private String codeDrink;
     private Double priceDrink;
     private String describeDrink;
-    private int imagesDrink;
+    private byte[] imagesDrink;
 
     public ProductDrink() {
     }
 
-
-
-    public ProductDrink(String nameDrink, String codeDrink, Double priceDrink, String describeDrink) {
-        this.nameDrink = nameDrink;
-        this.codeDrink = codeDrink;
-        this.priceDrink = priceDrink;
-        this.describeDrink = describeDrink;
-    }
-
-    public ProductDrink(int imagesDrink, String nameDrink) {
-        this.nameDrink = nameDrink;
-        this.imagesDrink = imagesDrink;
-    }
-
-    public ProductDrink(String nameDrink, String codeDrink, Double priceDrink, String describeDrink, int imagesDrink) {
+    public ProductDrink(String nameDrink, String codeDrink, Double priceDrink, String describeDrink, byte[] imagesDrink) {
         this.nameDrink = nameDrink;
         this.codeDrink = codeDrink;
         this.priceDrink = priceDrink;
@@ -66,11 +53,11 @@ public class ProductDrink implements Serializable {
         this.describeDrink = describeDrink;
     }
 
-    public int getImagesDrink() {
+    public byte[] getImagesDrink() {
         return imagesDrink;
     }
 
-    public void setImagesDrink(int imagesFod) {
-        this.imagesDrink = imagesFod;
+    public void setImagesDrink(byte[] imagesDrink) {
+        this.imagesDrink = imagesDrink;
     }
 }

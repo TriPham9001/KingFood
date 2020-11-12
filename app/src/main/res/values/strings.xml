@@ -19,8 +19,8 @@
     <string name="name_food">Tên Đồ Ăn</string>
     <string name="price_food">Giá Tiền</string>
     <string name="describe_food">Mô Tả</string>
-    <string name="save">Save</string>
-    <string name="cancel">Cancel</string>
+    <string name="save">Lưu</string>
+    <string name="cancel">Huỷ</string>
     <string name="get_started">Get Started</string>
     <string name="king_food">KING FOOD</string>
     <string name="hint_username">Nhập tên tài khoản</string>
