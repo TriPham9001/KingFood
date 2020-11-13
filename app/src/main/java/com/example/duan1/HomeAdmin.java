@@ -26,7 +26,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan1.Adapter.MenuItemsDrinkAdapter;
+import com.example.duan1.Adapter.MenuItemsFoodAdapter;
 import com.example.duan1.Model.ProductDrink;
+import com.example.duan1.Model.ProductFood;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -53,29 +55,39 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class HomeAdmin extends AppCompatActivity {
     private static final int GALLER_ACTION_PICK_CODE = 1;
     Uri imageUri;
-    RecyclerView recyclerViewDrink;
+    RecyclerView recyclerViewDrink, recyclerViewFood;
     ImageView btnAddDrink,btnAddFood;
-    EditText edtIDFood,edtNameFood,edtPriceFood,edtDescribeFood;
-    CircleImageView imageAddDrink;
+    EditText edtID,edtName,edtPrice,edtDescribe;
+    CircleImageView image;
     DatabaseReference databaseReference;
     ArrayList<ProductDrink> list;
+    ArrayList<ProductFood> listFood;
     SearchView searchView;
     ProductDrink productDrink;
-
+    ProductFood productFood;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_homeadmin);
         recyclerViewDrink = findViewById(R.id.drink_recycler);
+        recyclerViewFood = findViewById(R.id.food_recycler);
         btnAddDrink = findViewById(R.id.img_add_drink);
         btnAddFood = findViewById(R.id.img_add_food);
+
         productDrink = new ProductDrink();
+        productFood = new ProductFood();
         list = new ArrayList<>();
+        listFood = new ArrayList<>();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
-        LoadRecycler();
-
+        if(list == null && listFood == null){
+            databaseReference.setValue(productDrink);
+            databaseReference.setValue(productFood);
+        }
+        else{
+            LoadRecyclerDrink();
+            LoadReycylerFood();
+        }
         btnAddDrink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +102,7 @@ public class HomeAdmin extends AppCompatActivity {
         });
     }
 
-    public void LoadRecycler(){
+    public void LoadRecyclerDrink(){
         databaseReference.child("Drink").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -125,7 +137,41 @@ public class HomeAdmin extends AppCompatActivity {
             }
         });
     }
+    public void LoadReycylerFood(){
+        databaseReference.child("Food").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                productFood = snapshot.getValue(ProductFood.class);
+                listFood.add(productFood);
+                recyclerViewFood.setLayoutManager(new LinearLayoutManager(HomeAdmin.this));
+                MenuItemsFoodAdapter menuItemsFoodAdapter = new MenuItemsFoodAdapter(listFood, HomeAdmin.this);
+                recyclerViewFood.setHasFixedSize(true);
+                recyclerViewFood.setAdapter(menuItemsFoodAdapter);
+                menuItemsFoodAdapter.notifyDataSetChanged();
+                Toast.makeText(HomeAdmin.this, ""+listFood.size(), Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -165,32 +211,42 @@ public class HomeAdmin extends AppCompatActivity {
         recyclerViewDrink.setLayoutManager(layoutManagerMenuItems);
     }
 
-    public void InsertBottomSheetDialog(Boolean isFood){
+    public void InsertBottomSheetDialog(final Boolean isFood){
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         bottomSheetDialog.setContentView(R.layout.add_food_drink);
-        imageAddDrink = bottomSheetDialog.findViewById(R.id.img_add_new_drink);
-        edtIDFood = (EditText) bottomSheetDialog.findViewById(R.id.id_fd);
-        edtNameFood = (EditText) bottomSheetDialog.findViewById(R.id.name_fd);
-        edtPriceFood = (EditText) bottomSheetDialog.findViewById(R.id.ed_price_fd);
-        edtDescribeFood = (EditText) bottomSheetDialog.findViewById(R.id.ed_describe_fd);
-        Button btnSaveFood = (Button) bottomSheetDialog.findViewById(R.id.btn_save_fd);
+        image = bottomSheetDialog.findViewById(R.id.img_add_new_drink);
+        edtID = (EditText) bottomSheetDialog.findViewById(R.id.id_fd);
+        edtName = (EditText) bottomSheetDialog.findViewById(R.id.name_fd);
+        edtPrice = (EditText) bottomSheetDialog.findViewById(R.id.ed_price_fd);
+        edtDescribe = (EditText) bottomSheetDialog.findViewById(R.id.ed_describe_fd);
+        Button btnSave = (Button) bottomSheetDialog.findViewById(R.id.btn_save_fd);
         Button btnCancel = (Button) bottomSheetDialog.findViewById(R.id.btn_cancel_fd);
 
-        edtIDFood.setHint(isFood ? "Mã món ăn" : "Mã thức uống");
-        edtNameFood.setHint(isFood ? "Tên món ăn" : "Tên thức uống");
-        edtDescribeFood.setHint(isFood ? "Mô tả món ăn" : "Mô tả thức uống");
-        edtPriceFood.setHint(isFood ? "Giá tiền món ăn" : "Giá tiền thức uống");
+        edtID.setHint(isFood ? "Mã món ăn" : "Mã thức uống");
+        edtName.setHint(isFood ? "Tên món ăn" : "Tên thức uống");
+        edtDescribe.setHint(isFood ? "Mô tả món ăn" : "Mô tả thức uống");
+        edtPrice.setHint(isFood ? "Giá tiền món ăn" : "Giá tiền thức uống");
 
-        btnSaveFood.setOnClickListener(new View.OnClickListener() {
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                productDrink = new ProductDrink();
-                productDrink.setNameDrink(edtNameFood.getText().toString());
-                productDrink.setPriceDrink(Double.parseDouble(edtPriceFood.getText().toString()));
-                productDrink.setDescribeDrink(edtDescribeFood.getText().toString());
-                productDrink.setCodeDrink(edtIDFood.getText().toString());
-                databaseReference.child("Drink").push().setValue(productDrink);
-                bottomSheetDialog.dismiss();
+                if(isFood == false){
+                    productDrink = new ProductDrink();
+                    productDrink.setNameDrink(edtName.getText().toString());
+                    productDrink.setPriceDrink(Double.parseDouble(edtPrice.getText().toString()));
+                    productDrink.setDescribeDrink(edtDescribe.getText().toString());
+                    productDrink.setCodeDrink(edtID.getText().toString());
+                    databaseReference.child("Drink").push().setValue(productDrink);
+                    bottomSheetDialog.dismiss();
+                }else{
+                    productFood = new ProductFood();
+                    productFood.setNameFood(edtName.getText().toString());
+                    productFood.setPriceFood(Double.parseDouble(edtPrice.getText().toString()));
+                    productFood.setDescribeFood(edtDescribe.getText().toString());
+                    productFood.setCodeFood(edtID.getText().toString());
+                    databaseReference.child("Food").push().setValue(productFood);
+                    bottomSheetDialog.dismiss();
+                }
             }
         });
         btnCancel.setOnClickListener(new View.OnClickListener() {

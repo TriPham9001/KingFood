@@ -5,17 +5,17 @@ public class ProductFood {
     private String codeFood;
     private Double priceFood;
     private String describeFood;
-    private byte[] imagesFod;
+    private byte[] imagesFood;
 
     public ProductFood() {
     }
 
-    public ProductFood(String nameFood, String codeFood, Double priceFood, String describeFood, byte[] imagesFod) {
+    public ProductFood(String nameFood, String codeFood, Double priceFood, String describeFood, byte[] imagesFood) {
         this.nameFood = nameFood;
         this.codeFood = codeFood;
         this.priceFood = priceFood;
         this.describeFood = describeFood;
-        this.imagesFod = imagesFod;
+        this.imagesFood = imagesFood;
     }
 
     public String getNameFood() {
@@ -50,11 +50,11 @@ public class ProductFood {
         this.describeFood = describeFood;
     }
 
-    public byte[] getImagesFod() {
-        return imagesFod;
+    public byte[] getImagesFood() {
+        return imagesFood;
     }
 
-    public void setImagesFod(byte[] imagesFod) {
-        this.imagesFod = imagesFod;
+    public void setImagesFood(byte[] imagesFod) {
+        this.imagesFood = imagesFood;
     }
 }
