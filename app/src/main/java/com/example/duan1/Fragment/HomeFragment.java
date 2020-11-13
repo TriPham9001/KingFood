@@ -51,7 +51,6 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerPopular.setLayoutManager(layoutManager);
 
-
         recommendedAdapter = new RecommendedAdapter(List, getContext());
         recyclerRecommended.setAdapter(recommendedAdapter);
         recyclerRecommended.setLayoutManager(new LinearLayoutManager(getActivity()));
